@@ -29,7 +29,16 @@ CEC17-S-MTO is derived from CEC2017 single objective real-parameter numerical op
 | CEC17-S-MTO10 |  T1  |       Zakharov       |    10     |   200   |
 |               |  T2  |         Hf05         |    30     |  1400   |
 
-The benchmark can be reorganized by generating a random **function list** and **dimension list**, which can be found in **'CEC17_S_MTO.py'** of the python version code and **'CEC17_MTSO_NEW.m'** of the matlab version code.
+The benchmark can be reorganized by generating a random **function list** and **dimension list**, which can be found in **'CEC17_S_MTO.py'** of the python version code and **'CEC17_MTSO_NEW.m'** of the matlab version code. Note that the official code initially forms 30 functions but the second function is deleted. Therefore, when forming the function list, number 2 should not appear in the list. The function numbers of 3 to 30 in the codes correspond to the 2rd to 29th functions in the document. We have also processed the returned values of these 28 functions ($-100$) to make them identical to the document.
+
+~~~python
+import numpy as np
+# generate the function list
+func_nums = np.random.choice(np.arange(1, 30), 20, replace=False)
+func_nums[func_nums >= 2] += 1
+# generate the dimension list
+Dims = np.random.choice([10, 30, 50, 100], 20, replace=True)
+~~~
 
 ## 2.Python version
 
